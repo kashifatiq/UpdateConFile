@@ -34,18 +34,6 @@
             this.txtMasterFolder = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgResults = new System.Windows.Forms.DataGridView();
-            this.createmozart = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.sno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FolderPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DbServer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Database = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IntegratedSecurity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OnePlaceCon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MozartCon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Error = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblError = new System.Windows.Forms.Label();
             this.txtFileToSearch = new System.Windows.Forms.TextBox();
             this.btnReadFolder = new System.Windows.Forms.Button();
@@ -57,6 +45,19 @@
             this.chkReadOnlyTopFolder = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.createmozart = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.sno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FolderPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DbServer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Database = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IntegratedSecurity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OnePlaceCon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MozartCon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConTimeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Error = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgResults)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -107,6 +108,7 @@
             this.OnePlaceCon,
             this.MozartCon,
             this.FileName,
+            this.ConTimeOut,
             this.Error});
             this.dgResults.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgResults.Location = new System.Drawing.Point(3, 16);
@@ -116,93 +118,6 @@
             this.dgResults.Size = new System.Drawing.Size(1291, 521);
             this.dgResults.TabIndex = 3;
             this.dgResults.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgResults_CellContentClick);
-            // 
-            // createmozart
-            // 
-            this.createmozart.DataPropertyName = "sn";
-            this.createmozart.HeaderText = "Create Mozart Con";
-            this.createmozart.Name = "createmozart";
-            this.createmozart.Text = "Create Mozart Con";
-            this.createmozart.ToolTipText = "Create Mozart Con";
-            this.createmozart.Width = 120;
-            // 
-            // sno
-            // 
-            this.sno.DataPropertyName = "sno";
-            this.sno.HeaderText = "S.N";
-            this.sno.Name = "sno";
-            this.sno.ReadOnly = true;
-            this.sno.Width = 30;
-            // 
-            // FolderPath
-            // 
-            this.FolderPath.DataPropertyName = "FolderPath";
-            this.FolderPath.HeaderText = "Folder Path";
-            this.FolderPath.Name = "FolderPath";
-            this.FolderPath.ReadOnly = true;
-            // 
-            // DbServer
-            // 
-            this.DbServer.DataPropertyName = "DbServer";
-            this.DbServer.HeaderText = "Db Server";
-            this.DbServer.Name = "DbServer";
-            this.DbServer.ReadOnly = true;
-            // 
-            // Database
-            // 
-            this.Database.DataPropertyName = "Database";
-            this.Database.HeaderText = "Database Name";
-            this.Database.Name = "Database";
-            this.Database.ReadOnly = true;
-            // 
-            // UserID
-            // 
-            this.UserID.DataPropertyName = "UserID";
-            this.UserID.HeaderText = "User ID";
-            this.UserID.Name = "UserID";
-            this.UserID.ReadOnly = true;
-            // 
-            // Password
-            // 
-            this.Password.DataPropertyName = "Password";
-            this.Password.HeaderText = "Password";
-            this.Password.Name = "Password";
-            this.Password.ReadOnly = true;
-            // 
-            // IntegratedSecurity
-            // 
-            this.IntegratedSecurity.DataPropertyName = "IntegratedSecurity";
-            this.IntegratedSecurity.HeaderText = "Integrated Security";
-            this.IntegratedSecurity.Name = "IntegratedSecurity";
-            this.IntegratedSecurity.ReadOnly = true;
-            // 
-            // OnePlaceCon
-            // 
-            this.OnePlaceCon.DataPropertyName = "OnePlaceCon";
-            this.OnePlaceCon.HeaderText = "OnePlace Con";
-            this.OnePlaceCon.Name = "OnePlaceCon";
-            this.OnePlaceCon.ReadOnly = true;
-            // 
-            // MozartCon
-            // 
-            this.MozartCon.DataPropertyName = "MozartCon";
-            this.MozartCon.HeaderText = "Mozart Con";
-            this.MozartCon.Name = "MozartCon";
-            this.MozartCon.ReadOnly = true;
-            // 
-            // FileName
-            // 
-            this.FileName.DataPropertyName = "FileName";
-            this.FileName.HeaderText = "File Name";
-            this.FileName.Name = "FileName";
-            this.FileName.ReadOnly = true;
-            // 
-            // Error
-            // 
-            this.Error.DataPropertyName = "Error";
-            this.Error.HeaderText = "Error";
-            this.Error.Name = "Error";
-            this.Error.ReadOnly = true;
             // 
             // lblError
             // 
@@ -326,6 +241,99 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
+            // createmozart
+            // 
+            this.createmozart.DataPropertyName = "sn";
+            this.createmozart.HeaderText = "Create Mozart Con";
+            this.createmozart.Name = "createmozart";
+            this.createmozart.Text = "Create Mozart Con";
+            this.createmozart.ToolTipText = "Create Mozart Con";
+            this.createmozart.Width = 120;
+            // 
+            // sno
+            // 
+            this.sno.DataPropertyName = "sno";
+            this.sno.HeaderText = "S.N";
+            this.sno.Name = "sno";
+            this.sno.ReadOnly = true;
+            this.sno.Width = 30;
+            // 
+            // FolderPath
+            // 
+            this.FolderPath.DataPropertyName = "FolderPath";
+            this.FolderPath.HeaderText = "Folder Path";
+            this.FolderPath.Name = "FolderPath";
+            this.FolderPath.ReadOnly = true;
+            // 
+            // DbServer
+            // 
+            this.DbServer.DataPropertyName = "DbServer";
+            this.DbServer.HeaderText = "Db Server";
+            this.DbServer.Name = "DbServer";
+            this.DbServer.ReadOnly = true;
+            // 
+            // Database
+            // 
+            this.Database.DataPropertyName = "Database";
+            this.Database.HeaderText = "Database Name";
+            this.Database.Name = "Database";
+            this.Database.ReadOnly = true;
+            // 
+            // UserID
+            // 
+            this.UserID.DataPropertyName = "UserID";
+            this.UserID.HeaderText = "User ID";
+            this.UserID.Name = "UserID";
+            this.UserID.ReadOnly = true;
+            // 
+            // Password
+            // 
+            this.Password.DataPropertyName = "Password";
+            this.Password.HeaderText = "Password";
+            this.Password.Name = "Password";
+            this.Password.ReadOnly = true;
+            // 
+            // IntegratedSecurity
+            // 
+            this.IntegratedSecurity.DataPropertyName = "IntegratedSecurity";
+            this.IntegratedSecurity.HeaderText = "Integrated Security";
+            this.IntegratedSecurity.Name = "IntegratedSecurity";
+            this.IntegratedSecurity.ReadOnly = true;
+            // 
+            // OnePlaceCon
+            // 
+            this.OnePlaceCon.DataPropertyName = "OnePlaceCon";
+            this.OnePlaceCon.HeaderText = "OnePlace Con";
+            this.OnePlaceCon.Name = "OnePlaceCon";
+            this.OnePlaceCon.ReadOnly = true;
+            // 
+            // MozartCon
+            // 
+            this.MozartCon.DataPropertyName = "MozartCon";
+            this.MozartCon.HeaderText = "Mozart Con";
+            this.MozartCon.Name = "MozartCon";
+            this.MozartCon.ReadOnly = true;
+            // 
+            // FileName
+            // 
+            this.FileName.DataPropertyName = "FileName";
+            this.FileName.HeaderText = "File Name";
+            this.FileName.Name = "FileName";
+            this.FileName.ReadOnly = true;
+            // 
+            // ConTimeOut
+            // 
+            this.ConTimeOut.DataPropertyName = "ConTimeOut";
+            this.ConTimeOut.HeaderText = "Con Time Out";
+            this.ConTimeOut.Name = "ConTimeOut";
+            // 
+            // Error
+            // 
+            this.Error.DataPropertyName = "Error";
+            this.Error.HeaderText = "Error";
+            this.Error.Name = "Error";
+            this.Error.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,6 +380,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OnePlaceCon;
         private System.Windows.Forms.DataGridViewTextBoxColumn MozartCon;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ConTimeOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn Error;
     }
 }

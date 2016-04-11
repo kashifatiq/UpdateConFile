@@ -35,7 +35,7 @@ namespace UpdateConFile
             dtData.Columns.Add("UserID");
             dtData.Columns.Add("Password");
             dtData.Columns.Add("IntegratedSecurity");
-
+            dtData.Columns.Add("ConTimeOut");
             dtData.Columns.Add("Error");
         }
         private void button1_Click(object sender, EventArgs e)
@@ -77,12 +77,12 @@ namespace UpdateConFile
                         }
                         catch(Exception ex)
                         {
-                            AddDataRow(vrFolderPath, vrFileName, "", "", "", "", "", "", "", "Error 1: " + ex.Message);
+                            AddDataRow(vrFolderPath, vrFileName, "", "", "", "", "", "", "","", "Error 1: " + ex.Message);
                             continue;
                         }
                         if (ConnectionStrings.Elements().Count() == 0)
                         {
-                            AddDataRow(vrFolderPath, vrFileName, "", "", "", "", "", "", "", "connection string tag missing");
+                            AddDataRow(vrFolderPath, vrFileName, "", "", "", "", "", "", "","", "connection string tag missing");
                             continue;
                         }
                         else
@@ -94,7 +94,7 @@ namespace UpdateConFile
             }
             catch (Exception ex)
             {
-                AddDataRow(vrFolderPath, vrFileName, "", "", "", "", "", "", "", ex.Message);
+                AddDataRow(vrFolderPath, vrFileName, "", "", "", "", "", "", "","", ex.Message);
             }
         }
 
@@ -110,7 +110,7 @@ namespace UpdateConFile
                 string vrUserName = "";
                 string vrPassword = "";
                 string IntegratedSecurity = "";
-
+                string ConTimeOut = "";
                 foreach (XElement element in ConnectionStrings.Elements())
                 {
                     if (element.Name.LocalName.ToLower() == "add")
@@ -166,6 +166,14 @@ namespace UpdateConFile
                                 {
                                     IntegratedSecurity = conParameter.Replace("Integrated Security = ", string.Empty).Trim();
                                 }
+                                else if (conParameter.Contains("Connection Timeout="))
+                                {
+                                    ConTimeOut = conParameter.Replace("Connection Timeout=", string.Empty).Trim();
+                                }
+                                else if (conParameter.Contains("Connection Timeout = "))
+                                {
+                                    ConTimeOut = conParameter.Replace("Connection Timeout = ", string.Empty).Trim();
+                                }
                             }
                         }
                         else if (element.Attribute("name").Value == "MozartOnePlaceEntities")
@@ -174,11 +182,11 @@ namespace UpdateConFile
                         }
                     }
                 }
-                AddDataRow(vrFolderPath, vrFileName, vrOneplaceCon, vrMozrtCon,vrConServerName,vrConDatabaseName,vrUserName,vrPassword,IntegratedSecurity, "");
+                AddDataRow(vrFolderPath, vrFileName, vrOneplaceCon, vrMozrtCon,vrConServerName,vrConDatabaseName,vrUserName,vrPassword,IntegratedSecurity,ConTimeOut, "");
             }
             catch(Exception ex)
             {
-                AddDataRow(vrFolderPath, vrFileName, "", "", "", "", "", "", "", "Error ReadConFile" + ex.Message);
+                AddDataRow(vrFolderPath, vrFileName, "", "", "", "", "", "", "","", "Error ReadConFile" + ex.Message);
             }
         }
 
@@ -212,11 +220,11 @@ namespace UpdateConFile
             }
         }
 
-        private void AddDataRow(string vrFolerPath,string vrFileName,string vrOneplaceCon,string vrMozartCon, string DbServer,string Database,string UserID,string Password,string IntegratedSecurity, string vrError)
+        private void AddDataRow(string vrFolerPath,string vrFileName,string vrOneplaceCon,string vrMozartCon, string DbServer,string Database,string UserID,string Password,string IntegratedSecurity,string ConTimeOut, string vrError)
         {
             int vrSerialNum = 1;
             vrSerialNum = vrSerialNum + dtData.Rows.Count;
-            dtData.Rows.Add(vrSerialNum.ToString(), vrFolerPath, vrFileName, vrOneplaceCon, vrMozartCon,DbServer,Database,UserID,Password,IntegratedSecurity, vrError);
+            dtData.Rows.Add(vrSerialNum.ToString(), vrFolerPath, vrFileName, vrOneplaceCon, vrMozartCon,DbServer,Database,UserID,Password,IntegratedSecurity,ConTimeOut, vrError);
         }
 
         private void dgResults_CellContentClick(object sender, DataGridViewCellEventArgs e)

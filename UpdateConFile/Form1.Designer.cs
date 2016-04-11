@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnReadMasterFolder = new System.Windows.Forms.Button();
             this.txtMasterFolder = new System.Windows.Forms.TextBox();
@@ -58,6 +58,8 @@
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConTimeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Error = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtConTimeOut = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgResults)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -93,8 +95,8 @@
             // 
             this.dgResults.AllowUserToAddRows = false;
             this.dgResults.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            this.dgResults.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver;
+            this.dgResults.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.createmozart,
@@ -115,7 +117,7 @@
             this.dgResults.Name = "dgResults";
             this.dgResults.RowHeadersWidth = 20;
             this.dgResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgResults.Size = new System.Drawing.Size(1291, 521);
+            this.dgResults.Size = new System.Drawing.Size(1559, 553);
             this.dgResults.TabIndex = 3;
             this.dgResults.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgResults_CellContentClick);
             // 
@@ -126,7 +128,7 @@
             this.lblError.ForeColor = System.Drawing.Color.Red;
             this.lblError.Location = new System.Drawing.Point(3, 16);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(1291, 20);
+            this.lblError.Size = new System.Drawing.Size(1559, 20);
             this.lblError.TabIndex = 4;
             this.lblError.Text = "label2";
             this.lblError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -156,7 +158,7 @@
             this.MozartTampleteWUser.Multiline = true;
             this.MozartTampleteWUser.Name = "MozartTampleteWUser";
             this.MozartTampleteWUser.ReadOnly = true;
-            this.MozartTampleteWUser.Size = new System.Drawing.Size(1245, 34);
+            this.MozartTampleteWUser.Size = new System.Drawing.Size(1543, 34);
             this.MozartTampleteWUser.TabIndex = 7;
             this.MozartTampleteWUser.Text = resources.GetString("MozartTampleteWUser.Text");
             // 
@@ -172,6 +174,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtConTimeOut);
             this.groupBox1.Controls.Add(this.MozartTampleteIntegrated);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.chkReadOnlyTopFolder);
@@ -187,7 +191,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1297, 183);
+            this.groupBox1.Size = new System.Drawing.Size(1565, 214);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
@@ -197,7 +201,7 @@
             this.MozartTampleteIntegrated.Multiline = true;
             this.MozartTampleteIntegrated.Name = "MozartTampleteIntegrated";
             this.MozartTampleteIntegrated.ReadOnly = true;
-            this.MozartTampleteIntegrated.Size = new System.Drawing.Size(1245, 34);
+            this.MozartTampleteIntegrated.Size = new System.Drawing.Size(1543, 34);
             this.MozartTampleteIntegrated.TabIndex = 12;
             this.MozartTampleteIntegrated.Text = resources.GetString("MozartTampleteIntegrated.Text");
             // 
@@ -235,9 +239,9 @@
             // 
             this.groupBox2.Controls.Add(this.dgResults);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 183);
+            this.groupBox2.Location = new System.Drawing.Point(0, 214);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1297, 540);
+            this.groupBox2.Size = new System.Drawing.Size(1565, 572);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
@@ -334,11 +338,28 @@
             this.Error.Name = "Error";
             this.Error.ReadOnly = true;
             // 
+            // txtConTimeOut
+            // 
+            this.txtConTimeOut.Location = new System.Drawing.Point(126, 179);
+            this.txtConTimeOut.Name = "txtConTimeOut";
+            this.txtConTimeOut.Size = new System.Drawing.Size(462, 20);
+            this.txtConTimeOut.TabIndex = 13;
+            this.txtConTimeOut.Text = "Connection Timeout=60;";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 182);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(113, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Connection Time Out :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1297, 723);
+            this.ClientSize = new System.Drawing.Size(1565, 786);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -382,6 +403,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConTimeOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn Error;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtConTimeOut;
     }
 }
 

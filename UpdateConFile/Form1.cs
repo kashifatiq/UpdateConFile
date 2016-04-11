@@ -168,11 +168,11 @@ namespace UpdateConFile
                                 }
                                 else if (conParameter.Contains("Connection Timeout="))
                                 {
-                                    ConTimeOut = conParameter.Replace("Connection Timeout=", string.Empty).Trim();
+                                    ConTimeOut = conParameter.Trim() + ";";
                                 }
                                 else if (conParameter.Contains("Connection Timeout = "))
                                 {
-                                    ConTimeOut = conParameter.Replace("Connection Timeout = ", string.Empty).Trim();
+                                    ConTimeOut = conParameter.Trim()+ ";";
                                 }
                             }
                         }
@@ -237,6 +237,7 @@ namespace UpdateConFile
                     string vrFolderPath = senderGrid["FolderPath", e.RowIndex].Value.ToString();
                     string vrFileName = senderGrid["FileName", e.RowIndex].Value.ToString();
                     string vrCompletePath = vrFolderPath + "\\" + vrFileName;
+                    string vrOneplaceConStr = senderGrid["OnePlaceCon", e.RowIndex].Value.ToString();
                     string vrMozartConStr = string.Empty;
                     bool IntegratedSecurity = false;
 
@@ -269,6 +270,24 @@ namespace UpdateConFile
                     if (!string.IsNullOrEmpty(vrMozartConStr))
                     {
                         XDocument doc = XDocument.Load(vrCompletePath);
+                        #region Update oneplace
+                        if (string.IsNullOrEmpty(Convert.ToString(senderGrid["ConTimeOut", e.RowIndex].Value))) // add con time out in oneplace old con string
+                        {
+                            vrOneplaceConStr = vrOneplaceConStr + ";"+ txtConTimeOut.Text.Trim();
+                            vrOneplaceConStr = vrOneplaceConStr.Replace(";;", ";");
+                            doc.Element("connectionStrings").Elements().Where(el => el.Attribute("name").Value == "PhxDbConnectionString").Attributes("connectionString").First().Value = vrOneplaceConStr; 
+                        }
+                        else // update con time out in oneplace old con string
+                        {
+                            vrOneplaceConStr = vrOneplaceConStr.Replace(senderGrid["ConTimeOut", e.RowIndex].Value.ToString(), txtConTimeOut.Text.Trim());
+                            doc.Element("connectionStrings").Elements().Where(el => el.Attribute("name").Value == "PhxDbConnectionString").Remove();
+                            XElement root1 = new XElement("add");
+                            root1.Add(new XAttribute("name", "PhxDbConnectionString"));
+                            root1.Add(new XAttribute("connectionString", HttpUtility.HtmlDecode(vrOneplaceConStr)));
+                            root1.Add(new XAttribute("providerName", "System.Data.EntityClient"));
+                            doc.Element("connectionStrings").Add(root1);
+                        }
+                        #endregion
                         doc.Element("connectionStrings").Elements().Where(el => el.Attribute("name").Value == "MozartOnePlaceEntities").Remove();
                         XElement root = new XElement("add");
                         root.Add(new XAttribute("name", "MozartOnePlaceEntities"));

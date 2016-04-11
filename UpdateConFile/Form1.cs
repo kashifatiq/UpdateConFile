@@ -261,9 +261,6 @@ namespace UpdateConFile
                     if (!string.IsNullOrEmpty(vrMozartConStr))
                     {
                         XDocument doc = XDocument.Load(vrCompletePath);
-
-                        XElement ConnectionStrings = doc.Descendants("connectionStrings").First();
-                        IEnumerable<XElement> lst = doc.Element("connectionStrings").Elements("MozartOnePlaceEntities");
                         doc.Element("connectionStrings").Elements().Where(el => el.Attribute("name").Value == "MozartOnePlaceEntities").Remove();
                         XElement root = new XElement("add");
                         root.Add(new XAttribute("name", "MozartOnePlaceEntities"));
